@@ -40,10 +40,10 @@ export default function MediaCard() {
   return (
     <CardContainer>
       <Card
-        sx={{ height: "500px", width: "300px", backgroundColor: "#292828" }}
+        sx={{ height: {sm:"500px",xs:'400px'}, width: "300px", backgroundColor: "#292828" }}
       >
         <CardMedia
-          sx={{ height: "63%" }}
+          sx={{ height: {sm:"63%",xs:'50%'} }}
           image={`https://${details?.media?.images[0]?.url}`}
           title="green iguana"
         />
