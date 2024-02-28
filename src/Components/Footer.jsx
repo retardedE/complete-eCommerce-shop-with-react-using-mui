@@ -7,7 +7,12 @@ export default function Footer() {
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:theme.palette.primary.main,
-        height:"20vh"
+        height:"20vh",
+        width:"100%",
+        position:"fixed",
+        bottom:0,
+        right:0,
+        left:0,    
     }))
     const FooterMessageWrapper = styled(Typography)(({theme})=>({
         color:theme.palette.primary.secondary,
