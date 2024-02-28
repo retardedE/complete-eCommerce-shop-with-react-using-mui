@@ -11,7 +11,7 @@ import AuthContext from "./utils/AuthContext";
 import { Box, Stack } from "@mui/material";
 import Cart from "./Pages/Cart";
 export default function App() {
-  const [token, setToken] = useState(2);
+  const [token, setToken] = useState();
   const handleToken = (e) => {
     setToken(e);
   };
@@ -20,7 +20,7 @@ export default function App() {
       <AuthContext.Provider value={{ token, handleToken }}>
         <Stack>
           <Navbar />
-          <Box>
+          <Box sx={{minHeight:'70vh'}}>
             <Routes>
               <Route exact path="/" element={<Home />}></Route>
               <Route path="/products" element={<Product />}></Route>
