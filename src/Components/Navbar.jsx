@@ -2,9 +2,12 @@ import { Explicit, Notifications, ShoppingCart } from '@mui/icons-material'
 import { AppBar, Toolbar, styled, Box, Button, Avatar, Badge, MenuItem, Menu } from '@mui/material'
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from 'react'
+import AuthContext from '../utils/AuthContext';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {
+    const {token,handleToken}=useContext(AuthContext)
     const PageToolBar = styled(Toolbar)(({theme})=>({
         padding:theme.spacing(2),
         display:"flex",
@@ -124,20 +127,37 @@ export default function Navbar() {
                   </Link>
                 </NavItems>
               </MenuItem>
-              <MenuItem onClick={handleClose}>
-                {" "}
-                <NavItems>
-                  <Link
-                    style={{
-                      textDecoration: "none",
-                      color: "#292828",
-                    }}
-                    to={"/login-register"}
-                  >
-                    LoginRegister
-                  </Link>
-                </NavItems>
-              </MenuItem>
+              {token ? (
+                <MenuItem onClick={handleClose}>
+                  {" "}
+                  <NavItems onClick={() => handleToken(null)}>
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "#292828",
+                      }}
+                      to={"/login-register"}
+                    >
+                      Logout
+                    </Link>
+                  </NavItems>
+                </MenuItem>
+              ) : (
+                <MenuItem onClick={handleClose}>
+                  {" "}
+                  <NavItems>
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "#292828",
+                      }}
+                      to={"/login-register"}
+                    >
+                      Login/Register
+                    </Link>
+                  </NavItems>
+                </MenuItem>
+              )}
             </Menu>
 
             <PageLogoWrapper>RetardedE</PageLogoWrapper>
@@ -164,17 +184,31 @@ export default function Navbar() {
                   Products
                 </Link>
               </NavItems>
-              <NavItems>
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "#dedcdc",
-                  }}
-                  to={"/login-register"}
-                >
-                  LoginRegister
-                </Link>
-              </NavItems>
+              {token ? (
+                <NavItems onClick={() => handleToken(null)}>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: "#dedcdc",
+                    }}
+                    to={"/login-register"}
+                  >
+                    Logout
+                  </Link>
+                </NavItems>
+              ) : (
+                <NavItems>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: "#dedcdc",
+                    }}
+                    to={"/login-register"}
+                  >
+                    Login/Register
+                  </Link>
+                </NavItems>
+              )}
             </NavListContainer>
           </NavLeftSide>
           <NavRightSide>
@@ -187,7 +221,7 @@ export default function Navbar() {
                 style={{
                   textDecoration: "none",
                   color: "white",
-                  marginTop:"5px"
+                  marginTop: "5px",
                 }}
                 to={"/cart"}
               >
