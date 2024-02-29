@@ -28,17 +28,19 @@ export default function App() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent:"center",
+            left:"50%",
+            top:"50%",
+            transform:'translate(-50%,-50%)',
             gap: "30px",
             position: "absolute",
-            top: "20%",
-            left: "29%",
             textShadow: "10px 10px 10px black",
             zIndex: "1000",
           }}
         >
           <Typography
             textAlign={"center"}
-            width={{ sm: "800px", xs: "300px" }}
+            width={{ sm: "600px", xs: "300px", }}
             fontFamily={"Poppins"}
             color={"#dedcdc"}
             variant="h3"
