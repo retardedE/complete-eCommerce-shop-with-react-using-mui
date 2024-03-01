@@ -6,6 +6,7 @@ export default function Footer() {
         display:'flex',
         alignItems:"center",
         justifyContent:"center",
+        textAlign:"center",
         backgroundColor:theme.palette.primary.main,
         height:"20vh",
         width:"100%",
