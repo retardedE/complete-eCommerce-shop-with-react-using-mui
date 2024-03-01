@@ -37,7 +37,7 @@ export default function Products() {
     const queryMapped = query?.map((e,index)=><Card key={index} image={e?.imageUrl} name={e?.brandName} description={e?.colour} id={e?.id} price={e?.price?.current?.text} />)
     return (
       <QueryContainer>
-        {query ? (
+        {query ? (  
           queryMapped
         ) : (
           <MoonLoader style={{ height: "10vh" }} color="#dedcdc" />
