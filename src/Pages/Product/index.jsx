@@ -24,7 +24,7 @@ export default function Products() {
             method: "GET",
             headers: {
               "X-RapidAPI-Key":
-                "8096c50e6cmshdfe46701ce1d8e6p1fdfa3jsn7bafbb978840",
+                "856b3da013mshff2e5f950c53a5fp1e31c9jsn214b232ca85b",
               "X-RapidAPI-Host": "asos2.p.rapidapi.com",
             },
           }
@@ -37,10 +37,12 @@ export default function Products() {
     const queryMapped = query?.map((e,index)=><Card key={index} image={e?.imageUrl} name={e?.brandName} description={e?.colour} id={e?.id} price={e?.price?.current?.text} />)
     return (
       <QueryContainer>
-        {query ? (  
-          queryMapped
+        {query?.length === 0 ? (
+          <Box sx={{height:"80vh", width:"100%", display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", backgroundColor:"#292828"}}>
+            <MoonLoader style={{ height: "10vh" }} />
+          </Box>
         ) : (
-          <MoonLoader style={{ height: "10vh" }} color="#dedcdc" />
+          queryMapped
         )}
       </QueryContainer>
     );
