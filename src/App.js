@@ -11,7 +11,7 @@ import AuthContext from "./utils/AuthContext";
 import { Box, Stack } from "@mui/material";
 import Cart from "./Pages/Cart";
 export default function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(1);
   const handleToken = (e) => {
     setToken(e);
   };

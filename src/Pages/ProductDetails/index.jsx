@@ -10,7 +10,17 @@ import Typography from "@mui/material/Typography";
 import { styled, Box } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem, removeItem } from "../../store/slice/CartSlice";
 export default function MediaCard() {
+  const x = useParams();
+  const {list}=useSelector(state=>state.cart)
+  const quantityProduct=list.find(e=>{
+    if(e.id==x.id){
+      return true
+    }
+  })?.quantity
+  const dispatch=useDispatch()
   const CardContainer = styled(Box)(({theme})=>({
     display:"flex",
     justifyContent:"center",
@@ -19,7 +29,6 @@ export default function MediaCard() {
     backgroundColor:theme.palette.primary.main
   }))
   const [details, setDetails] = useState();
-  const x = useParams();
   const divEl = useRef();
   useEffect(() => {
     fetch(
@@ -36,7 +45,6 @@ export default function MediaCard() {
       .then((res) => res.json())
       .then((data) => setDetails(data));
   }, [x.id]);
-  console.log(details)
   return (
     <CardContainer>
       <Card
@@ -64,10 +72,11 @@ export default function MediaCard() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button color="success" size="small">
+          <Button onClick={()=>dispatch(addItem(details))} color="success" size="small">
             <AddIcon />
           </Button>
-          <Button color="error" size="small">
+          {quantityProduct&&<Typography color={'#dedcdc'}>{quantityProduct}</Typography>}
+          <Button onClick={()=>dispatch(removeItem(details?.id))} color="error" size="small">
             <RemoveIcon />
           </Button>
         </CardActions>

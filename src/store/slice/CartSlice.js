@@ -10,7 +10,7 @@ const CartSlice=createSlice({
             state.list = []
         },
         removeItem:(state,action)=>{
-            state.list=state.list?.filter((e)=>{
+            state.list=state.list.filter((e)=>{
                 if(e.id==action.payload){
                     e.quantity=e.quantity-1
                     if(e.quantity===0){
@@ -23,17 +23,19 @@ const CartSlice=createSlice({
         },
         addItem:(state,action)=>{
             let add=false
-            state.list=state.list?.map((e)=>{
-                if(e.id==action.payload.id){
-                    add = true
-                    e.quantity = e.quantity +1
-                    return e
-                }
-                if(!add){
-                    state.list.push({...action.payload,quantity:1})
-                }
-                return e
-            })
+            state.list = state.list.map((e) => {
+              if (e.id == action.payload.id) {
+                add = true;
+                e.quantity = e.quantity + 1;
+                return e;
+              }
+              return e;
+            }) 
+            if(!add){
+                state.list.push({...action.payload,quantity:1});
+            }
+            
+            
         }
     }
 })
