@@ -12,34 +12,26 @@ export default function Products() {
         gap:theme.spacing(8),
         flexWrap:"wrap",
         padding:theme.spacing(3),
-        marginBottom:'20vh',
+        marginBottom:'10vh',
         backgroundColor:theme.palette.primary.main
     }))
     const [query,setQuery]=useState([])
     useEffect(() => {
       (async () => {
-        const res = await fetch(
-          "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&limit=48&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US",
-          {
-            method: "GET",
-            headers: {
-              "X-RapidAPI-Key":
-                "856b3da013mshff2e5f950c53a5fp1e31c9jsn214b232ca85b",
-              "X-RapidAPI-Host": "asos2.p.rapidapi.com",
-            },
-          }
-        );
+        const res = await fetch("https://fakestoreapi.com/products", {
+          method: "GET",
+        });
         const data = await res.json();
-        setQuery(data.products);
+        setQuery(data);
       })();
     }, []);
     console.log(query)
-    const queryMapped = query?.map((e,index)=><Card key={index} image={e?.imageUrl} name={e?.brandName} description={e?.colour} id={e?.id} price={e?.price?.current?.text} />)
+    const queryMapped = query?.map((e,index)=><Card key={index} image={e?.image} name={e?.title} description={e?.category} id={e?.id} price={e?.price} />)
     return (
       <QueryContainer>
         {query?.length === 0 ? (
           <Box sx={{height:"80vh", width:"100%", display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", backgroundColor:"#292828"}}>
-            <MoonLoader style={{ height: "10vh" }} />
+            <MoonLoader />
           </Box>
         ) : (
           queryMapped

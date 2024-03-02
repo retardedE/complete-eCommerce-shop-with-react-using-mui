@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Card({image, name, price, id, description}) {
     const CardDiv = styled(Box)(({theme})=>({
-        height:"400px",
+        height:"700px",
         width:"300px",
         display:"flex",
         cursor:"pointer",
@@ -36,9 +36,9 @@ export default function Card({image, name, price, id, description}) {
     }))
   return (
     <CardDiv>
-      <CardImage src={`https://${image}`} />
+      <CardImage objectFit='cover' src={image} />
       <CardData>
-        <Typography variant="h6">{name}</Typography>
+        <Typography textAlign={'center'} variant="h6">{name}</Typography>
         <Typography variant="body6">{description}</Typography>
         <Typography variant="body6">{price}</Typography>
       </CardData>
@@ -46,7 +46,7 @@ export default function Card({image, name, price, id, description}) {
         <Button disableRipple sx={{ color: "#dedcdc" }}>
           <Link
             style={{ color: "#dedcdc", textDecoration: "none" }}
-            to={`/product-details/${id}/${name.split(" ").join("-")}`}
+            to={`/product-details/${id}/name`}
           >
             More Information
           </Link>

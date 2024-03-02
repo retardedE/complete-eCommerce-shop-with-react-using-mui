@@ -16,7 +16,7 @@ const TableBoxContainer = styled(Box)(({theme})=>({
   minHeight:"80vh",
   textAlign:"center",
   backgroundColor:theme.palette.primary.main,
-  marginBottom:"40vh"
+  marginBottom:"10vh"
 }))
 const NoItemAlert = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -76,17 +76,17 @@ export default function CustomizedTables() {
                 {list.map((e, index) => (
                   <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
-                      {e?.brand?.name}
+                      {e?.title}
                     </StyledTableCell>
                     <StyledTableCell align="center">
                       <img
-                        src={"https://" + e?.media?.images[0].url}
+                        src={e?.image}
                         style={{ height: "60px", width: "60px" }}
                         alt="img"
                       />
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {e?.price?.current?.text}
+                      {e?.price}
                     </StyledTableCell>
                     <StyledTableCell align="center">
                       {e?.quantity}

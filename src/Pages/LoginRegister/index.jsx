@@ -72,7 +72,7 @@ export default function LoginRegister() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "70vh",
+        height: "80vh",
         backgroundColor: "#292828",
       }}
     >

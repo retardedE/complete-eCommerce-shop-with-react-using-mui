@@ -8,7 +8,7 @@ export default function Footer() {
         justifyContent:"center",
         textAlign:"center",
         backgroundColor:theme.palette.primary.main,
-        height:"20vh",
+        height:"10vh",
         width:"100%",
         position:"fixed",
         bottom:0,

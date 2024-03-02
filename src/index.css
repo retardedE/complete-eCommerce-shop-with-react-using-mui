@@ -17,9 +17,13 @@ code {
 .swiper {
   float: left;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
 }
-
+@media only screen and (max-width: 600px) {
+.swiper{
+  height: 78vh;
+}  
+}
 .swiper-slide {
   text-align: center;
   font-size: 18px;
